@@ -10,14 +10,14 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(800, 600);
   background(128, 0, 0);
   smooth();
 }
 
 function draw() {
-  let cols = 2;
-  let rows = 1;
+  let cols = 3;
+  let rows = 2;
   let tileW = width / cols;
   let tileH = height / rows;
 
@@ -107,7 +107,7 @@ function drawSketch4(x, y, w, h) {
     let angle = TWO_PI * (i / dotCount);
     let px = cos(angle) * borderSize;
     let py = sin(angle) * borderSize;
-    ellipse(px, py, 10); // Dots forming the border
+    ellipse(px, py, 8); // Dots forming the border
   }
 
   pop();
@@ -127,34 +127,34 @@ function drawSketch1(x, y, w, h) {
   ellipse(0, 0, r * 2);
 
   // Dotted White Border (inside the black circle)
-  let dotCount = 36;
+  let dotCount = 30;
   let borderR = r * 0.8;
   fill(255);
   for (let i = 0; i < dotCount; i++) {
     let angle = TWO_PI * (i / dotCount) + dotRotation1;
     let px = cos(angle) * borderR;
     let py = sin(angle) * borderR;
-    ellipse(px, py, 5);
+    ellipse(px, py, 3);
   }
 
   // Concentric White Ring (after the dotted border)
   stroke(255);
   noFill();
-  strokeWeight(10);
+  strokeWeight(5);
   let ringR = borderR * 1.4;
   ellipse(0, 0, ringR);
 
   // Central Small White Circle
   fill(255);
   noStroke();
-  let centerDotSize = r * 0.3;
+  let centerDotSize = r * 0.2;
   ellipse(0, 0, centerDotSize);
 
   // Teardrop Shapes (8 petals inside the inner ring)
   let petalCount = 8;
   let petalDist = ringR * 0.3;
-  let petalWidth = 10;
-  let petalHeight = 30;
+  let petalWidth = 5;
+  let petalHeight = 15;
 
   fill(255);
   for (let i = 0; i < petalCount; i++) {
@@ -175,7 +175,7 @@ function drawSketch1(x, y, w, h) {
   let zigzagInnerR = r * 1.05; // Inner radius
 
   stroke(255); // Keep zigzag border unchanged
-  strokeWeight(4); // Increase stroke weight to prevent disappearance
+  strokeWeight(3); // Increase stroke weight to prevent disappearance
   noFill();
   beginShape();
   for (let i = 0; i <= zigzagCount; i++) {
