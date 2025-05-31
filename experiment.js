@@ -41,7 +41,7 @@ function setup() {
 }
 
 function draw() {
-  background(50);
+  background(147,112,219);
   translate(width / 2, height / 2);
 
   let diamondSize = 200;
