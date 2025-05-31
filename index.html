@@ -6,16 +6,76 @@
     <title>Faqeha's p5.js Sketches</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" >
+    <link rel="icon" type="image/svg+xml" href="flower-icon.svg">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
-    <h1>Faqeha Nadeem : p5.js Sketches</h1>
-    <ul>
-        <li><a href="ajrak.html">Ajrak</a></li>
-        <li><a href="tattoo.html">Rabari Tattoos</a></li>
-        <li><a href="ralli.html">Ralli</a></li>
-    </ul>
+    <div class="container">
+    <h1>Faqeha's p5.js Sketches</h1>
+    <div class="info-cards nintendo-box">
+      <div class="info-card" data-info="all">
+        <p> Sketches made with p5.js, playing with patterns, shapes and audio.</p>
+      </div>
+      <div class="info-card" data-info="patterns" style="display: none;">
+        <p>Documenting different cultural patterns as audio-visual p5 Sketches.</p>
+      </div>
+      <div class="info-card" data-info="karoonjhar" style="display: none;">
+      <p>
+        Created for the Echoes of Karoonjhar digital archive. You can see all the 
+        sketches curated <a href="https://karoonjhar-patterns.vercel.app/" class="inline-link">here</a> 
+        with more background on the project and the different cultural patterns documented.
+      </p>
+            </div>
+</div>
+  <!-- Filter Controls -->
+  <div class="filter-controls">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="patterns">Patterns</button>
+    <button data-filter="karoonjhar">Echoes of Karoonjhar</button>
+  </div>
+
+  <!-- Sketch Buttons -->
+  <ul class="sketch-list">
+    <li data-category="all"><a href="sound-cursor-1.html">Sound Cursor I</a></li>
+    <li data-category="all"><a href="sound-cursor-2.html">Sound Cursor II</a></li>
+    <li data-category="all"><a href="experiment.html">Experiment I</a></li>
+    <li data-category="patterns"><a href="experiment.html">Phulkari</a></li>
+    <li data-category="patterns karoonjhar"><a href="ajrak.html">Ajrak</a></li>
+    <li data-category="patterns karoonjhar"><a href="ralli.html">Ralli</a></li>
+    <li data-category="patterns karoonjhar"><a href="tattoo.html">Rabari Tattoos</a></li>
+  </ul>
+
+  <!-- Filtering Script -->
+<script>
+  const filterButtons = document.querySelectorAll('.filter-controls button');
+  const sketchItems = document.querySelectorAll('.sketch-list li');
+  const infoCards = document.querySelectorAll('.info-card');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Update active button
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Show/hide sketch items
+      sketchItems.forEach(item => {
+        const categories = item.dataset.category.split(" ");
+        item.style.display = (filter === 'all' || categories.includes(filter)) ? 'inline-block' : 'none';
+      });
+
+      // Show/hide info cards
+      infoCards.forEach(card => {
+        card.style.display = (card.dataset.info === filter) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
