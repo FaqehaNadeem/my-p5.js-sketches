@@ -1,189 +1,139 @@
-/* General Reset */
 body {
+  font-family: 'Press Start 2P', monospace;
+  background: #BFBFBF;
+  color: #000;
   margin: 0;
-  padding: 3rem 1rem;
-  background-color: #fffafc;
-  font-family: 'Press Start 2P', cursive;
-  text-align: center;
-  color: #333;
-
-}
-
-/* Heading Styling */
-h1 {
-  font-size: 1.5rem;
-  color: #ff3b93;
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-}
-
-/* Button Container */
-ul {
-  list-style-type: none;
-  padding: 0;
+  height: 100vh;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin: 0 auto;
-  max-width: 90vw;
+  align-items: center;
 }
 
-/* Remove bullet and space */
-li {
-  margin: 0;
+/* =======================
+   Main Modal Window
+======================= */
+.modal {
+  width: 800px;
+  height: 600px;
+  background: #E0E0E0;
+  border: 3px solid #000;
+  box-shadow: inset 2px 2px #fff;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
-/* Cute Nintendo-style Buttons */
-a {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
+/* Title Bar */
+.title-bar {
+  background: #000;
   color: #fff;
-  font-size: 0.75rem;
-  border: 2px solid #ff4d9d;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #ff7edf 0%, #7ee8fa 100%);
-  background-clip: padding-box;
-  box-shadow:
-    inset 0 -2px 6px rgba(255, 255, 255, 0.4),
-    0 3px 0 #c2185b,
-    0 6px 12px rgba(255, 126, 223, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  backdrop-filter: blur(4px);
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom: 2px solid #000;
 }
 
-a:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow:
-    inset 0 -2px 8px rgba(255, 255, 255, 0.5),
-    0 4px 0 #a0144e,
-    0 8px 16px rgba(126, 232, 250, 0.4);
+.modal-content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-/* Polished Nintendo-style container */
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 4rem;
+/* =======================
+   Info Box (fixed)
+======================= */
+.info-cards {
   position: relative;
-  border-radius: 20px;
-  background: linear-gradient(145deg, rgba(255, 126, 223, 0.2), rgba(126, 232, 250, 0.2));
-  box-shadow:
-    0 5px 0 #c2185b,
-    0 0 0 4px #fffafc,
-    inset 0 0 20px rgba(255, 126, 223, 0.2);
-  backdrop-filter: blur(6px);
-  z-index: 0;
+  width: 100%;
+  height: 120px; /* fixed height */
+  margin-bottom: 1.5rem;
 }
 
-
-
-
-
-/* Nintendo-style Message Boxes */
-.nintendo-box {
-  background: linear-gradient(145deg, #fff0fa, #ffe4f3);
-  border: 4px solid #ff4d9d;
-  border-radius: 16px;
-  box-shadow:
-    0 4px 0 #c2185b,
-    0 0 0 4px #fffafc,
-    inset 0 0 10px rgba(255, 204, 229, 0.4);
-  padding: 1.25rem;
-  margin: 1rem auto;
-  max-width: 700px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 0.65rem;
-  line-height: 1.6;
-  color: #696363;
-  text-align: left;
-  position: relative;
-  z-index: 0;
-}
-
-
-
-/* Info card overrides */
 .info-card {
-  margin-bottom: 2rem;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #E0E0E0;
+  border: 2px solid #000;
+  padding: 1rem;
+  font-size: 0.6rem;
+  line-height: 1.4;
+  display: none;
+  box-shadow: inset 1px 1px #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: left;
 }
 
-.description-card {
-  margin-bottom: 2rem;
+.info-card[data-info="all"] {
+  display: block;
 }
 
-/* Filter Controls - Nintendo Bubble Buttons */
+/* =======================
+   Filter Buttons
+======================= */
 .filter-controls {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .filter-controls button {
-  font-size: 0.6rem;
+  background: #E0E0E0;
+  border: 2px solid #000;
   padding: 0.5rem 1rem;
-  background: #ffdefc;
-  border: 2px solid #ff4d9d;
-  border-radius: 10px;
-  color: #ff4d9d;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
   cursor: pointer;
-  box-shadow: 0 3px 0 #c2185b, inset 0 -2px 4px rgba(255, 255, 255, 0.3);
-  transition: all 0.2s ease;
+  box-shadow: inset 1px 1px #fff;
 }
 
-.filter-controls button:hover {
-  background: #ffb6e1;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 0 #a0144e;
+.filter-controls button.active {
+  background: #A0A0A0;
 }
 
-.inline-link {
-  all: unset; /* Reset all inherited styles from button-style <a> */
-  display: inline;
-  font-family: 'Press Start 2P', cursive;
-  font-size: inherit;
-  font-weight:bolder;
-  color: #a0144e;
-  cursor: pointer;
-  position: relative;
+/* =======================
+   Sketch Grid
+======================= */
+.sketch-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: start;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border: 2px solid #000;
+  background: #D0D0D0;
 }
 
-/* Optional subtle hover effect: underline animation */
-.inline-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1px;
-  background-color: #ff4d9d;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease-in-out;
+.sketch {
+  width: 100px;
+  text-align: center;
+  display: none;
 }
 
-.inline-link:hover::after {
-  transform: scaleX(1);
+.sketch img {
+  width: 64px;
+  height: 64px;
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  image-rendering: pixelated;
+  border: 2px solid #000;
+  background: #fff;
+  padding: 4px;
+  box-shadow: inset 1px 1px #fff;
 }
 
-
-
-
-/* Media Query */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 0.7rem;
-  }
-
-  a {
-    font-size: 0.6rem;
-    padding: 0.6rem 1.2rem;
-  }
-
-  .nintendo-box {
-    font-size: 0.6rem;
-  }
+.sketch a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.55rem;
+  word-wrap: break-word;
+  display: block;
 }

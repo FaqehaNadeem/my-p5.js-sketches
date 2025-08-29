@@ -1,79 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faqeha's p5.js Sketches</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet" >
-    <link rel="icon" type="image/svg+xml" href="flower-icon.svg">
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faqeha's p5.js Sketches</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-    <h1>Faqeha's p5.js Sketches</h1>
-    <div class="info-cards nintendo-box">
-      <div class="info-card" data-info="all">
-        <p> Sketches made with p5.js, playing with patterns, shapes and audio.</p>
+  <div class="modal">
+    <div class="title-bar">Faqeha's p5.js Sketches</div>
+    <div class="modal-content">
+
+      <!-- Info Box -->
+      <div class="info-cards">
+        <div class="info-card" data-info="all">
+          Sketches made with p5.js, playing with patterns, shapes and audio.
+        </div>
+        <div class="info-card" data-info="patterns">
+          Documenting different cultural patterns as audio-visual p5 Sketches.
+        </div>
+        <div class="info-card" data-info="karoonjhar">
+          Created for the 
+          <a href="https://karoonjhar-patterns.vercel.app/" class="inline-link">Echoes of Karoonjhar digital archive</a> 
+          to document the cultural heritage of the Karoonjhar Mountains in Sindh, Pakistan.
+        </div>
       </div>
-      <div class="info-card" data-info="patterns" style="display: none;">
-        <p>Documenting different cultural patterns as audio-visual p5 Sketches.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-controls">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="patterns">Patterns</button>
+        <button data-filter="karoonjhar">Echoes</button>
       </div>
-      <div class="info-card" data-info="karoonjhar" style="display: none;">
-      <p>
-        Created for the <a href="https://karoonjhar-patterns.vercel.app/" class="inline-link">Echoes of Karoonjhar digital archive</a> 
-        to document the cultural heritage of the Karoonjhar Mountains in Sindh, Pakistan.
-      </p>
-            </div>
-</div>
-  <!-- Filter Controls -->
-  <div class="filter-controls">
-    <button data-filter="all" class="active">All</button>
-    <button data-filter="patterns">Patterns</button>
-    <button data-filter="karoonjhar">Echoes of Karoonjhar</button>
+
+      <!-- Sketch Grid -->
+      <div class="sketch-grid">
+        <div class="sketch" data-category="all">
+          <a href="sketches/sound-cursor-1.html">
+            <img src="icons/music-note-1.svg" alt="icon">
+            Sound Cursor I
+          </a>
+        </div>
+        <div class="sketch" data-category="all">
+          <a href="sketches/sound-cursor-2.html">
+            <img src="icons/music-note-2.svg" alt="icon">
+            Sound Cursor II
+          </a>
+        </div>
+        <div class="sketch" data-category="all">
+          <a href="sketches/experiment.html">
+            <img src="icons/paint-brush.svg" alt="icon">
+            Experiment I
+          </a>
+        </div>
+        <div class="sketch" data-category="patterns">
+          <a href="sketches/phulkari.html">
+            <img src="icons/paint-palette.svg" alt="icon">
+            Phulkari
+          </a>
+        </div>
+        <div class="sketch" data-category="patterns karoonjhar">
+          <a href="sketches/ajrak.html">
+            <img src="icons/easel.svg" alt="icon">
+            Ajrak
+          </a>
+        </div>
+        <div class="sketch" data-category="patterns karoonjhar">
+          <a href="sketches/ralli.html">
+            <img src="icons/paint-palette.svg" alt="icon">
+            Ralli
+          </a>
+        </div>
+        <div class="sketch" data-category="patterns karoonjhar">
+          <a href="sketches/tattoo.html">
+            <img src="icons/paint-brush.svg" alt="icon">
+            Rabari Tattoos
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Sketch Buttons -->
-  <ul class="sketch-list">
-    <li data-category="all"><a href="sketches/sound-cursor-1.html">Sound Cursor I</a></li>
-    <li data-category="all"><a href="sketches/sound-cursor-2.html">Sound Cursor II</a></li>
-    <li data-category="all"><a href="sketches/experiment.html">Experiment I</a></li>
-    <li data-category="patterns"><a href="sketches/phulkari.html">Phulkari</a></li>
-    <li data-category="patterns karoonjhar"><a href="sketches/ajrak.html">Ajrak</a></li>
-    <li data-category="patterns karoonjhar"><a href="sketches/ralli.html">Ralli</a></li>
-    <li data-category="patterns karoonjhar"><a href="sketches/tattoo.html">Rabari Tattoos</a></li>
-  </ul>
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-controls button');
+    const sketchItems = document.querySelectorAll('.sketch');
+    const infoCards = document.querySelectorAll('.info-card');
 
-  <!-- Filtering Script -->
-<script>
-  const filterButtons = document.querySelectorAll('.filter-controls button');
-  const sketchItems = document.querySelectorAll('.sketch-list li');
-  const infoCards = document.querySelectorAll('.info-card');
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-
-      // Update active button
+    function showCategory(filter) {
+      // update active button
       filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      document.querySelector(`.filter-controls button[data-filter="${filter}"]`).classList.add('active');
 
-      // Show/hide sketch items
+      // show/hide sketches
       sketchItems.forEach(item => {
         const categories = item.dataset.category.split(" ");
-        item.style.display = (filter === 'all' || categories.includes(filter)) ? 'inline-block' : 'none';
+        item.style.display = (filter === 'all' || categories.includes(filter)) ? 'block' : 'none';
       });
 
-      // Show/hide info cards
+      // show/hide info cards
       infoCards.forEach(card => {
         card.style.display = (card.dataset.info === filter) ? 'block' : 'none';
       });
-    });
-  });
-</script>
+      if (filter === 'all') {
+        document.querySelector('.info-card[data-info="all"]').style.display = 'block';
+      }
+    }
 
+    // attach events
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        showCategory(btn.dataset.filter);
+      });
+    });
+
+    // default
+    showCategory('all');
+  </script>
 </body>
 </html>
