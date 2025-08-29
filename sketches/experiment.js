@@ -3,7 +3,7 @@ let dotSound;
 
 
 function preload() {
-    dotSound = loadSound("bell.mp3", soundLoaded, soundError);
+    dotSound = loadSound("./sounds/bell.mp3", soundLoaded, soundError);
   }
   
   function soundLoaded() {

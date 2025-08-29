@@ -6,10 +6,6 @@ body {
   font-family: 'Press Start 2P', cursive;
   text-align: center;
   color: #333;
-  /* background-image: radial-gradient(circle at top left, #ffe8f6, #fffafc 60%); */
-  background-image: url("bg.svg");
-  background-attachment: fixed;
-  background-size: cover;
 
 }
 

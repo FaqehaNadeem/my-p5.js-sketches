@@ -8,8 +8,8 @@ let prevLineHover = { top: false, bottom: false };
 
 function preload() {
   soundFormats('mp3', 'wav');
-  hoverSound = loadSound('manjeera.mp3'); // Replace with actual file
-  lineHoverSound = loadSound('manjeera.mp3'); // Replace with actual file
+  hoverSound = loadSound('./sounds/manjeera.mp3'); // Replace with actual file
+  lineHoverSound = loadSound('./sounds/manjeera.mp3'); // Replace with actual file
 }
 
 function setup() {

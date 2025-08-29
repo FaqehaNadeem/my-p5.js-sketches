@@ -12,7 +12,7 @@ const CELL_SIZE = 50;
 let CENTER_X, CENTER_Y;
 
 function preload() {
-  pullSound = loadSound('pop.mp3');
+  pullSound = loadSound('./sounds/pop.mp3');
 }
 
 function setup() {

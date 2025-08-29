@@ -5,8 +5,8 @@ let rotating4 = false;
 let sound1, sound4;
 
 function preload() {
-  sound1 = loadSound('water.mp3'); // Replace with actual file
-  sound4 = loadSound('water.mp3'); // Replace with actual file
+  sound1 = loadSound('./sounds/water.mp3'); // Replace with actual file
+  sound4 = loadSound('./sounds/water.mp3'); // Replace with actual file
 }
 
 function setup() {
